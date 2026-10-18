@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lut4gr0</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Fondo decorativo con nubes flotantes -->
+    <div class="sky-background">
+        <div class="cloud c1"></div>
+        <div class="cloud c2"></div>
+        <div class="cloud c3"></div>
+    </div>
+
+<!-- Cabecera UNIFICADA con Navegación, Botón de Tema y Perfil -->
+<header class="encabezado">
+    <div class="header-izq">
+        <button id="btn-tema" class="btn-tema" title="Cambiar tema">🌙</button>
+        
+        <!-- Botón y Menú Desplegable -->
+        <div class="menu-container">
+            <button id="btn-menu" class="nav-btn-hamburguesa">☰ Menú</button>
+            <nav id="menu-desplegable" class="dropdown-menu">
+                <button class="nav-btn activo" id="nav-inicio">Inicio</button>
+                <button class="nav-btn" id="nav-favoritas">Favoritas ⭐</button>
+                <button class="nav-btn" id="nav-gestionar">Gestionar ⚙️</button>
+            </nav>
+        </div>
+    </div>
+
+    <div class="perfil-usuario" id="btn-abrir-perfil">
+        <img id="foto-perfil-header" src="https://via.placeholder.com/150" alt="Foto de perfil" class="avatar">
+        <span id="nombre-perfil-header">Luti</span>
+    </div>
+</header>
+
+    <!-- Contenido Principal -->
+    <h1 class="Titulo">Hola Luti 👋</h1>
+    <p>Pon en el botón que pone + para agregar tus fotos.</p>
+
+    <!-- Input oculto para la galería y botón de agregar -->
+    <input type="file" id="input-archivo" accept="image/*" style="display: none;">
+    <button id="btn-agregar" class="btn">+ Agregar foto</button>
+
+    <!-- Contenedor de la galería -->
+    <div class="galeria-contenedor" id="galeria">
+        <!-- Aquí se irán añadiendo las fotos -->
+    </div>
+
+    <!-- Ventana Emergente (Modal) para Editar Perfil -->
+    <div id="modal-perfil" class="modal">
+        <div class="modal-contenido">
+            <span id="cerrar-perfil" class="boton-cerrar">&times;</span>
+            <h2>Editar Perfil</h2>
+            
+            <label for="input-nombre">Tu nombre:</label>
+            <input type="text" id="input-nombre" placeholder="Escribe tu nombre...">
+
+            <label>Foto de perfil:</label>
+            <input type="file" id="input-archivo-perfil" accept="image/*" style="display: none;">
+            <button type="button" id="btn-cambiar-foto-perfil" class="btn" style="background-color: var(--accent-color); color: var(--text-color);">📁 Elegir nueva foto</button>
+
+            <button id="btn-guardar-perfil" class="btn" style="margin-top: 10px;">Guardar Cambios</button>
+        </div>
+    </div>
+
+    <!-- Visor de imagen ampliada (Pantalla completa tipo móvil) -->
+    <div id="visor-imagen" class="visor-modal">
+        <span id="cerrar-visor" class="visor-cerrar">&times;</span>
+        <img id="img-ampliada" class="visor-contenido-img" src="" alt="Foto ampliada">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

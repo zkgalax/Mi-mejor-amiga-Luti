@@ -1,0 +1,497 @@
+/* ==========================================
+   1. VARIABLES Y TEMAS (Morados y Nubes)
+   ========================================== */
+   :root {
+    --bg-color: #f3e8ff;
+    --card-bg: #ffffff;
+    --text-color: #2d1b4e;
+    --primary-color: #8a2be2;
+    --primary-hover: #7b1fa2;
+    --accent-color: #d8b4fe;
+    --shadow: 0 4px 15px rgba(138, 43, 226, 0.15);
+}
+
+/* Modo oscuro */
+body.dark-mode {
+    --bg-color: #0d061f;
+    --card-bg: #1a0f35;
+    --text-color: #f3e8ff;
+    --primary-color: #a855f7;
+    --primary-hover: #9333ea;
+    --accent-color: #4c1d95;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    padding: 20px;
+    padding-top: 90px; /* Espacio para que la cabecera fija no tape el contenido */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* ==========================================
+   2. CABECERA Y PERFIL
+   ========================================== */
+.encabezado {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    z-index: 100;
+    transition: background-color 0.3s ease;
+}
+
+.header-izq {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Botón de tema */
+.btn-tema {
+    background: rgba(138, 43, 226, 0.1);
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 50%;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-tema:hover {
+    transform: scale(1.1);
+    background: rgba(138, 43, 226, 0.2);
+}
+
+/* Perfil de usuario en cabecera */
+.perfil-usuario {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 6px 16px;
+    border-radius: 30px;
+    background: rgba(138, 43, 226, 0.1);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.perfil-usuario:hover {
+    transform: scale(1.05);
+    background: rgba(138, 43, 226, 0.2);
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+}
+
+#nombre-perfil-header {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+
+/* ==========================================
+   3. MENÚ DE NAVEGACIÓN
+   ========================================== */
+.navegacion {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-btn:hover {
+    background: rgba(138, 43, 226, 0.15);
+}
+
+.nav-btn.activo {
+    background: var(--primary-color);
+    color: white;
+}
+
+
+/* ==========================================
+   4. TÍTULOS Y BOTONES GENERALES
+   ========================================== */
+.Titulo {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   5. VENTANA EMERGENTE (MODAL PERFIL)
+   ========================================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.activo {
+    display: flex;
+}
+
+.modal-contenido {
+    background: var(--card-bg);
+    color: var(--text-color);
+    padding: 35px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.boton-cerrar {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: color 0.2s ease;
+}
+
+.boton-cerrar:hover {
+    color: var(--primary-color);
+}
+
+.modal-contenido label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.modal-contenido input {
+    padding: 12px 15px;
+    border-radius: 10px;
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    outline: none;
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    color: #000;
+}
+
+.modal-contenido input:focus {
+    border-color: var(--primary-color);
+}
+
+
+/* ==========================================
+   6. GALERÍA Y CUADRADITOS
+   ========================================== */
+.galeria-contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.foto-item {
+    aspect-ratio: 1 / 1;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: var(--card-bg);
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    border: 2px solid rgba(138, 43, 226, 0.2);
+}
+
+.foto-item:hover {
+    transform: scale(1.03);
+    border-color: var(--primary-color);
+}
+
+.foto-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Botones de acción flotantes sobre las fotos */
+.btn-foto-accion {
+    position: absolute;
+    border: none;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    color: white;
+    font-size: 1.1rem;
+    padding: 8px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+    z-index: 5;
+}
+
+.btn-foto-accion:hover {
+    transform: scale(1.15);
+    background: rgba(138, 43, 226, 0.9);
+}
+
+.btn-fav {
+    top: 10px;
+    right: 10px;
+}
+
+.btn-borrar {
+    bottom: 10px;
+    right: 10px;
+    background: rgba(220, 38, 38, 0.8);
+}
+
+.btn-borrar:hover {
+    background: rgba(239, 68, 68, 1);
+}
+
+
+/* ==========================================
+   7. VISOR DE FOTO AMPLIADA (LIGHTBOX)
+   ========================================== */
+.visor-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.visor-modal.activo {
+    display: flex;
+}
+
+.visor-contenido-img {
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    object-fit: contain;
+}
+
+.visor-cerrar {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    font-size: 45px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.visor-cerrar:hover {
+    color: var(--primary-color);
+}
+
+
+/* ==========================================
+   8. FONDO DE CIELO, NUBES Y ANIMACIONES
+   ========================================== */
+.sky-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+    transition: background 0.5s ease;
+}
+
+body.dark-mode .sky-background {
+    background: linear-gradient(135deg, #0d061f 0%, #1e113a 100%);
+}
+
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 100px;
+    animation: flotarNubes 25s infinite linear;
+}
+
+body.dark-mode .cloud {
+    background: rgba(216, 180, 254, 0.1);
+}
+
+.cloud::before, .cloud::after {
+    content: '';
+    position: absolute;
+    background: inherit;
+    border-radius: 50%;
+}
+
+/* Nube 1 */
+.c1 {
+    width: 120px; height: 40px;
+    top: 15%; left: -150px;
+    animation-duration: 28s;
+}
+.c1::before { width: 50px; height: 50px; top: -25px; left: 20px; }
+.c1::after { width: 60px; height: 60px; top: -35px; left: 50px; }
+
+/* Nube 2 */
+.c2 {
+    width: 180px; height: 60px;
+    top: 40%; left: -220px;
+    animation-duration: 40s;
+    animation-delay: -5s;
+}
+.c2::before { width: 80px; height: 80px; top: -40px; left: 30px; }
+.c2::after { width: 90px; height: 90px; top: -50px; left: 75px; }
+
+/* Nube 3 */
+.c3 {
+    width: 100px; height: 35px;
+    top: 70%; left: -150px;
+    animation-duration: 22s;
+    animation-delay: -10s;
+}
+.c3::before { width: 40px; height: 40px; top: -20px; left: 15px; }
+.c3::after { width: 50px; height: 50px; top: -25px; left: 40px; }
+
+/* NUEVA NUBE 4 (Extra para darle más magia al fondo) */
+.c4 {
+    width: 150px; height: 50px;
+    top: 85%; left: -200px;
+    animation-duration: 33s;
+    animation-delay: -15s;
+}
+.c4::before { width: 65px; height: 65px; top: -30px; left: 25px; }
+.c4::after { width: 75px; height: 75px; top: -40px; left: 60px; }
+
+/* Keyframes de movimiento */
+@keyframes flotarNubes {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(100vw + 300px));
+    }
+}
+
+/* ==========================================
+   MENÚ DESPLEGABLE (HAMBURGUESA)
+   ========================================== */
+   .menu-container {
+    position: relative;
+}
+
+.nav-btn-hamburguesa {
+    background: rgba(138, 43, 226, 0.12);
+    border: none;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.nav-btn-hamburguesa:hover {
+    background: rgba(138, 43, 226, 0.25);
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    padding: 10px;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 160px;
+    z-index: 200;
+    border: 1px solid rgba(138, 43, 226, 0.2);
+}
+
+.dropdown-menu.activo {
+    display: flex;
+}
+
+.dropdown-menu .nav-btn {
+    width: 100%;
+    text-align: left;
+    padding: 10px 12px;
+    border-radius: 10px;
+}
